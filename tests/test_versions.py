@@ -18,8 +18,9 @@ class TestVersions(unittest.TestCase):
         channels = load_channels()
         majors = {c.split(".")[0] for c in channels}
         # Dahlia main: net9.0 everywhere; TwitchLib tests: net8.0;
-        # stage-tamagotchi-kirie: net10.0.
-        self.assertEqual(majors, {"8", "9", "10"})
+        # stage-tamagotchi-kirie: net10.0. The monthly channel job may add
+        # newer supported majors, so this is a subset check, not equality.
+        self.assertTrue({"8", "9", "10"} <= majors, f"missing Dahlia majors in {channels}")
 
     def test_readme_table_matches_env(self):
         readme = (ROOT / "README.md").read_text()
