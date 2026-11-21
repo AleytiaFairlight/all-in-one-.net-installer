@@ -13,6 +13,7 @@ Needed channels (in [`dotnet-versions.env`](dotnet-versions.env)):
 | 8.0 | `TwitchLib.Client` tests/benchmarks target `net8.0` (CI installs 8 + 9) |
 | 9.0 | Main build: bot, coordinator, twitch, obs, dashboard, avatar, youtube, games, social, workflows (`net9.0`) |
 | 10.0 | `avatar/apps/stage-tamagotchi-kirie` targets `net10.0`; TwitchLib multi-targets `net10.0` |
+| 11.0 | New supported major (STS). Dahlia has no `net11.0` target yet; SDK 11 also builds older TFMs and covers Dahlia when it adopts `net11.0`. |
 
 `netstandard2.0/2.1` needs no extra SDK. The `netframework4.8` example in
 `lib/Dahlia-TwitchLib` is Windows-only, not in `DahliaBot.sln`, and is ignored.

@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.2
+
+- Add .NET channel(s) 11.0 (monthly update, 2026-11-21): newly supported major(s) per Microsoft's releases-index.
+- Channels are only ever added, never removed; drop EOL ones by hand if Dahlia no longer targets them.
+
 ## 1.0.1
 
 - Fix CI: replace `Write-Host` with `Write-Output`, use approved verb + named parameters in `install-dotnet.ps1`.
