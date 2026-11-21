@@ -41,13 +41,16 @@ jobs:
         run: |
           NEW="${{ steps.update.outputs.new_channels }}"
           BRANCH="auto/dotnet-channels-$(date -u +%Y%m)"
-          if gh pr list --head "$BRANCH" --state open --json number --jq -e '.[0].number' >/dev/null; then
+          OPEN_PR="$(gh pr list --head "$BRANCH" --state open --json number --jq '.[].number')"
+          if [ -n "$OPEN_PR" ]; then
             echo "update PR for $BRANCH is already open; skipping"
             exit 0
           fi
+          # Drop a stale branch left by an earlier failed run (no PR uses it).
+          git push origin --delete "$BRANCH" 2>/dev/null || true
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -b "$BRANCH"
+          git checkout -B "$BRANCH"
           git add dotnet-versions.env README.md VERSION CHANGELOG.md
           git commit -m "Channels: add .NET ${NEW} (monthly update)"
           git push -u origin "$BRANCH"
