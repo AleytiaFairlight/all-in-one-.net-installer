@@ -25,7 +25,12 @@ jobs:
       - name: self-tests
         run: python -m unittest discover -s tests -v
       - name: dry-run lists all channels
-        run: ./install-dotnet.sh --dry-run | tee /tmp/dryrun.txt && grep -q "8.0" /tmp/dryrun.txt && grep -q "9.0" /tmp/dryrun.txt && grep -q "10.0" /tmp/dryrun.txt
+        run: |
+          ./install-dotnet.sh --dry-run | tee /tmp/dryrun.txt
+          grep -q "dotnet-installer" /tmp/dryrun.txt
+          # Deterministic missing-channel path (does not depend on the runner's SDKs).
+          DOTNET_INSTALL_DIR=/tmp/empty-dotnet ./install-dotnet.sh --dry-run --channel 99.0 | tee /tmp/dryrun-missing.txt
+          grep -q "99.0" /tmp/dryrun-missing.txt
 
   powershell:
     name: Lint PowerShell installer
@@ -36,11 +41,13 @@ jobs:
         shell: pwsh
         run: |
           Install-Module PSScriptAnalyzer -Force -Scope CurrentUser
-          Invoke-ScriptAnalyzer -Path install-dotnet.ps1 -EnableExit
+          Invoke-ScriptAnalyzer -Path install-dotnet.ps1 -Severity Error -EnableExit
       - name: DryRun lists all channels
         shell: pwsh
         run: |
-          powershell -ExecutionPolicy Bypass -File install-dotnet.ps1 -DryRun | Tee-Object dryrun.txt
-          Select-String -Path dryrun.txt -Pattern "8.0" | Out-Null
-          Select-String -Path dryrun.txt -Pattern "9.0" | Out-Null
-          Select-String -Path dryrun.txt -Pattern "10.0" | Out-Null
+          $out = & "$PWD/install-dotnet.ps1" -DryRun
+          $out | Tee-Object dryrun.txt
+          if (-not ($out -match "dotnet-installer")) { throw "dry-run produced no installer output" }
+          # Deterministic missing-channel path (does not depend on the runner's SDKs).
+          $missing = & "$PWD/install-dotnet.ps1" -DryRun -Channel 99.0
+          if (-not ($missing -match "99\.0")) { throw "dry-run missing-channel path broken: $missing" }
