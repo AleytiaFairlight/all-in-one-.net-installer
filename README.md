@@ -30,7 +30,7 @@ Linux / macOS:
 One-liner (pinned to this release):
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/AleytiaFairlight/dahlia-dotnet-installer/v1.0.0/install-dotnet.sh | bash
+curl -fsSL https://raw.githubusercontent.com/AleytiaFairlight/dahlia-dotnet-installer/v1.0.1/install-dotnet.sh | bash
 ```
 
 Windows (PowerShell):
@@ -44,7 +44,7 @@ powershell -ExecutionPolicy Bypass -File install-dotnet.ps1 -DryRun
 One-liner:
 
 ```powershell
-irm https://raw.githubusercontent.com/AleytiaFairlight/dahlia-dotnet-installer/v1.0.0/install-dotnet.ps1 | iex
+irm https://raw.githubusercontent.com/AleytiaFairlight/dahlia-dotnet-installer/v1.0.1/install-dotnet.ps1 | iex
 ```
 
 ## Options

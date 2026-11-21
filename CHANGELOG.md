@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.1
+
+- Fix CI: replace `Write-Host` with `Write-Output`, use approved verb + named parameters in `install-dotnet.ps1`.
+- Harden CI dry-run checks so they don't depend on the runner's installed SDKs.
+
 ## 1.0.0
 
 - Initial installer: `install-dotnet.sh` (Linux/macOS) and `install-dotnet.ps1` (Windows).
