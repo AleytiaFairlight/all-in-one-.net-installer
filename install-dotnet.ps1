@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-  Dahlia .NET installer (Windows). Installs every .NET SDK Dahlia needs
+  All in One .NET Installer (Windows). Installs every .NET SDK Dahlia needs
   (see dotnet-versions.env) using Microsoft's dotnet-install.ps1.
   Safe to re-run: only missing major.minor SDK channels are installed.
 
@@ -142,7 +142,7 @@ if ($DryRun) {
   exit 0
 }
 
-$tmp = Join-Path -Path ([System.IO.Path]::GetTempPath()) -ChildPath ("dahlia-dotnet-" + [System.Guid]::NewGuid().ToString("N"))
+$tmp = Join-Path -Path ([System.IO.Path]::GetTempPath()) -ChildPath ("all-in-one-dotnet-" + [System.Guid]::NewGuid().ToString("N"))
 New-Item -ItemType Directory -Path $tmp | Out-Null
 try {
   $installer = Join-Path -Path $tmp -ChildPath "dotnet-install.ps1"

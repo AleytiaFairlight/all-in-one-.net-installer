@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Monthly .NET channel updater for dahlia-dotnet-installer.
+"""Monthly .NET channel updater for All in One .NET Installer.
 
 Compares the channels in dotnet-versions.env against Microsoft's supported
 .NET majors (https://builds.dotnet.microsoft.com/dotnet/release-metadata/releases-index.json)

@@ -1,4 +1,4 @@
-# Dahlia .NET installer
+# All in One .NET Installer
 
 Installs every .NET SDK that [Dahlia](https://github.com/AleytiaFairlight/Dahlia) needs,
 on Windows, Linux and macOS. It wraps Microsoft's official `dotnet-install`
@@ -31,7 +31,7 @@ Linux / macOS:
 One-liner (pinned to this release):
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/AleytiaFairlight/dahlia-dotnet-installer/v1.0.1/install-dotnet.sh | bash
+curl -fsSL https://raw.githubusercontent.com/AleytiaFairlight/all-in-one-.net-installer/v1.0.1/install-dotnet.sh | bash
 ```
 
 Windows (PowerShell):
@@ -45,7 +45,7 @@ powershell -ExecutionPolicy Bypass -File install-dotnet.ps1 -DryRun
 One-liner:
 
 ```powershell
-irm https://raw.githubusercontent.com/AleytiaFairlight/dahlia-dotnet-installer/v1.0.1/install-dotnet.ps1 | iex
+irm https://raw.githubusercontent.com/AleytiaFairlight/all-in-one-.net-installer/v1.0.1/install-dotnet.ps1 | iex
 ```
 
 ## Options
@@ -75,7 +75,7 @@ export DOTNET_ROOT="$HOME/.dotnet" PATH="$PATH:$HOME/.dotnet"
 Weekly cron (Linux/macOS):
 
 ```cron
-0 3 * * 0 /opt/dahlia-dotnet-installer/install-dotnet.sh --yes >> ~/.cache/dahlia-dotnet-install.log 2>&1
+0 3 * * 0 /opt/all-in-one-.net-installer/install-dotnet.sh --yes >> ~/.cache/all-in-one-dotnet-install.log 2>&1
 ```
 
 Windows Task Scheduler: run `install-dotnet.ps1` weekly with `-ExecutionPolicy Bypass`.

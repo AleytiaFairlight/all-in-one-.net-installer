@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Dahlia .NET installer (Linux/macOS).
+# All in One .NET Installer (Linux/macOS).
 # Installs every .NET SDK Dahlia needs (see dotnet-versions.env) using
 # Microsoft's dotnet-install.sh. Safe to re-run: it only installs channels
 # whose major.minor SDK is missing (routine-friendly, like deploy/live/install.sh).
@@ -19,7 +19,7 @@
 #   DOTNET_INSTALL_DIR       same as --install-dir.
 #   DOTNET_VERSIONS_FILE     path to dotnet-versions.env (default: next to this script).
 #
-# Routine use (weekly cron): /path/to/install-dotnet.sh --yes >> ~/.cache/dahlia-dotnet-install.log 2>&1
+# Routine use (weekly cron): /path/to/install-dotnet.sh --yes >> ~/.cache/all-in-one-dotnet-install.log 2>&1
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
